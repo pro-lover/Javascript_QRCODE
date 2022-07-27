@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <input type="text" id="qr-data" onchange="generateQR()">
+        <div class="container">
+
+            <div style="border: 1px solid black;" class="box" id="qrcode"></div>
+
+            <div class="box overlay">
+                <canvas id="myCanvas"  width="256" height="256" style="border: 1px solid black; float: left;"></canvas>
+            </div>
+            
+        </div>
+        <div class="container">
+            <button type="button" id="btnDisplay">Display</button>
+            <button type="button" id="btnDownload">Download</button>
+        </div>
+        <img src="" id="imgConverted" style="float: left; border: 2px solid #00f; margin-left: 10px;">
+          
+        
+
+
+        
+
+    </body>
+    
+    <script src="js/qrcode.min.js"></script>
+    <script>
+        var qrdata = document.getElementById('qr-data');
+        var qrcode = new QRCode(document.getElementById('qrcode'));
+
+        function generateQR() {
+
+            var data = qrdata.value;
+            qrcode.makeCode(data);
+            console.log(generateQR());
+        
+        }
+        
+    </script>
+    <script>
+
+                const btnDisplay = document.querySelector("#btnDisplay");
+                 const btnDownload = document.querySelector("#btnDownload");
+                 const myCanvas = document.querySelector("#myCanvas");
+                const imgConverted = document.querySelector("#imgConverted");
+                const ctx = myCanvas.getContext("2d");
+                var img = document.getElementById("qrcode");
+
+                ctx.font = "50px Roboto";
+                ctx.fillStyle = "red";
+                ctx.fillText("dcode",100 ,100);
+                ctx.fillRect(200 , 150, 150, 75);
+                //ctx.drawImage(img,10,10);
+         
+                btnDisplay.addEventListener("click", function () {
+         
+                    const dataURL = myCanvas.toDataURL();
+                    console.log(dataURL);
+                    imgConverted.src = dataURL;
+         
+                });
+    </script>
+
+</html>
