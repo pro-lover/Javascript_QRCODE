@@ -16,3 +16,39 @@
 
 
                <canvas id="myCanvas"  width="256" height="256" style="border: 1px solid black; float: left;"></canvas>
+
+               <script type="text/javascript">
+    const wrappert = document.querySelector(".wrapper");
+    const DownloadBtnt = wrappert.querySelector(".donwload button");
+    DownloadBtnt.addEventListener("click", () => {
+       // var element = document.querySelector("#htmlContent");
+
+        html2canvas($("htmlContent"), {
+                onrendered: function(canvas){
+                    var imageData = canvas.toDataURL("image/jpg");
+                    var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+                    $("#download").attr("download", "image.jpg").attr("href", newData);
+                }
+                
+            });
+    });
+ //           function autoClick(){
+      //  $("#download").click();
+   // }
+    //$(document).ready(function(){
+    //    var element = $("#htmlContent");
+
+       // $("#download").on('click', function(){
+         //   html2canvas(element, {
+              //  onrendered: function(canvas){
+               //     var imageData = canvas.toDataURL("image/jpg");
+               //     var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+            //        $("#download").attr("download", "image.jpg").attr("href", newData);
+              //  }
+                
+           // });
+       // });
+   // })
+
+
+    </script>

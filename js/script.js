@@ -1,3 +1,8 @@
+
+
+
+/*
+
 const wrapper = document.querySelector(".wrapper");
 const qrInput = wrapper.querySelector(".form input");
 const generateBtn = wrapper.querySelector(".form button");
@@ -10,14 +15,42 @@ ctx.font = "50px Roboto";
 ctx.fillStyle = "red";
 ctx.fillText("dcode", 100,100);
 
+var switchimg = 0;
+if(switchimg<1)
+{
+  var imagesrc = "asset/qr-code.png";
+  switchimg = 2;
+}
+
 generateBtn.addEventListener("click", () => {
     let qrValue = qrInput.value;
     if(!qrValue) return;
     generateBtn.innerText = "Generate QR code...";
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`;
+
+    console.log(imagesrc)
+    const getBase64Image = (url) => {
+        const img = new Image();
+        img.setAttribute('crossOrigin', 'anonymous');
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          imagesrc = canvas.toDataURL("image/png");
+          console.log(imagesrc)
+          qrImg.src = imagesrc;
+        }
+        img.src = url
+      }
+      getBase64Image(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`);
+      console.log("3 : "+ imagesrc)
+    });
+    //qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`;
+    
     qrImg.addEventListener("load", () => {
         wrapper.classList.add("active");
-        //ctx.drawImage(qrImg,10,10);
+        ctx.drawImage(qrImg,10,10);
         generateBtn.innerHTML = "Generate QR code"
     });
 
@@ -35,11 +68,11 @@ generateBtn.addEventListener("click", () => {
     //img.src=qrImg;
     //console.log(img.src);
 
-   // DownloadBtn.addEventListener("click", () => {
+   DownloadBtn.addEventListener("click", () => {
 
        // ctx.drawImage(qrImg, 0, 0);
 
-        /*if(window.navigator.msSaveBlob)
+        if(window.navigator.msSaveBlob)
         {
             console.log("downloading...");
             window.navigator.msSaveBlob(canvas.msToBlob(),"canvas-image.png")
@@ -53,7 +86,7 @@ generateBtn.addEventListener("click", () => {
             a.click();
             document.body.removeChild(a);
 
-        }*/
+        }
        
     //});
 
@@ -63,3 +96,4 @@ qrInput.addEventListener("keyup", () => {
         wrapper.classList.remove("active");
     }
 });
+*/
