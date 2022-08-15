@@ -39,7 +39,7 @@ generateBtn.addEventListener("click", () => {
 
        // ctx.drawImage(qrImg, 0, 0);
 
-        /*if(window.navigator.msSaveBlob)
+        if(window.navigator.msSaveBlob)
         {
             console.log("downloading...");
             window.navigator.msSaveBlob(canvas.msToBlob(),"canvas-image.png")
@@ -53,7 +53,7 @@ generateBtn.addEventListener("click", () => {
             a.click();
             document.body.removeChild(a);
 
-        }*/
+        }
        
     //});
 
