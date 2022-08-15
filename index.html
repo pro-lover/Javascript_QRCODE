@@ -8,7 +8,7 @@
 
     </head>
     <body>
-        <canvas id="myCanvas"> </canvas>
+        <canvas id="myCanvas" width="256" height="256" > </canvas>
         <div class="wrapper">
             <header>
                 <h1>QR Code Generator</h1>
@@ -19,19 +19,55 @@
                 <button>Generate QR code</button>
 
             </div>
-            <div class="qr-code display">
+            <div id="htmlContent" class="qr-code display">
                 
-                <img id="myImg" width="256" height="256" src="qr-code.png" alt="qr-code">
+                <img id="myImg" width="256" height="256" src="asset/qr-code.png" alt="qr-code">
             </div>
             <div class="qr-code donwload">
-                <button>Download</button>
+                <button id="download">Download</button>
             </div>
            
         </div>
 
     </body>
-    
     <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    const wrappert = document.querySelector(".wrapper");
+    const DownloadBtnt = wrappert.querySelector(".donwload button");
+    DownloadBtnt.addEventListener("click", () => {
+       // var element = document.querySelector("#htmlContent");
+
+        html2canvas($("htmlContent"), {
+                onrendered: function(canvas){
+                    var imageData = canvas.toDataURL("image/jpg");
+                    var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+                    $("#download").attr("download", "image.jpg").attr("href", newData);
+                }
+                
+            });
+    });
+ //           function autoClick(){
+      //  $("#download").click();
+   // }
+    //$(document).ready(function(){
+    //    var element = $("#htmlContent");
+
+       // $("#download").on('click', function(){
+         //   html2canvas(element, {
+              //  onrendered: function(canvas){
+               //     var imageData = canvas.toDataURL("image/jpg");
+               //     var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+            //        $("#download").attr("download", "image.jpg").attr("href", newData);
+              //  }
+                
+           // });
+       // });
+   // })
+
+
+    </script>
+
     
 
 </html>

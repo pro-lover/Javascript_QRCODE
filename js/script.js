@@ -35,19 +35,17 @@ generateBtn.addEventListener("click", () => {
     //img.src=qrImg;
     //console.log(img.src);
 
-    DownloadBtn.addEventListener("click", () => {
+   // DownloadBtn.addEventListener("click", () => {
 
        // ctx.drawImage(qrImg, 0, 0);
 
-        if(window.navigator.msSaveBlob)
+        /*if(window.navigator.msSaveBlob)
         {
             console.log("downloading...");
             window.navigator.msSaveBlob(canvas.msToBlob(),"canvas-image.png")
         }else{
             const a = document.createElement("a");
-            var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-            console.log(img);
-             img = canvas.toDataURL();
+            var img = canvas.toDataURL();
             console.log(img);
             document.body.appendChild(a);
             a.href = img ; 
@@ -55,12 +53,11 @@ generateBtn.addEventListener("click", () => {
             a.click();
             document.body.removeChild(a);
 
-        }
+        }*/
        
-    });
+    //});
 
 });
-
 qrInput.addEventListener("keyup", () => {
     if(!qrInput.value){
         wrapper.classList.remove("active");
