@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en zu" xml:lang="en zu">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,6 @@
 
     </head>
     <body>
-        <canvas id="myCanvas" width="256" height="256" > </canvas>
         <div class="wrapper">
             <header>
                 <h1>QR Code Generator</h1>
@@ -28,86 +27,6 @@
             </div>
            
         </div>
-
-        <script type="text/javascript">
-            const wrapper = document.querySelector(".wrapper");
-            const qrInput = wrapper.querySelector(".form input");
-            const generateBtn = wrapper.querySelector(".form button");
-            const DownloadBtn = wrapper.querySelector(".donwload button");
-            const qrImg = document.getElementById("myImg");
-            const canvas = document.getElementById('myCanvas');
-
-            var switchimg = 0;
-            var RQmessage= document.getElementById('myIn');
-            if(switchimg<1)
-            {
-              var imagesrc = "asset/qr-code.png";
-              var urlImg = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=example`;
-              switchimg = 2;
-            }
-
-            // Real time preview card
-            setInterval(function(){
-              preview();
-            }, 0);
-            //$("#myBt").on('click', function(){
-            generateBtn.addEventListener("click", () => {
-              let qrValue = RQmessage.value;
-              if(!qrValue) return;
-                generateBtn.innerText = "Generate QR code...";
-                  console.log(qrValue)
-                  const getBase64Image = (url) => {
-                  const img = new Image();
-                  img.setAttribute('crossOrigin', 'anonymous');
-                  img.onload = () => {
-                    //const canvas = document.createElement("canvas");
-                    
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext("2d");
-                    ctx.drawImage(img, 0, 0);
-                    imagesrc = canvas.toDataURL("image/png");
-                    console.log(imagesrc)
-                  }
-                  img.src = url
-                }
-                getBase64Image(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${qrValue}`);
-                console.log(imagesrc)
-                qrImg.addEventListener("load", () => {
-                    wrapper.classList.add("active");
-                    generateBtn.innerHTML = "Generate QR code"
-                });
-            });
-           
-            function preview(){
-
-                qrImg.src = imagesrc;
-
-            }
-            DownloadBtn.addEventListener("click", () => {
-
-            // ctx.drawImage(qrImg, 0, 0);
-
-            if(window.navigator.msSaveBlob)
-            {
-                console.log("downloading...");
-                window.navigator.msSaveBlob(canvas.msToBlob(),"canvas-image.png")
-            }else{
-                const a = document.createElement("a");
-                var img = canvas.toDataURL();
-                console.log(img);
-                document.body.appendChild(a);
-                a.href = img ; 
-                a.download = "canvas-image.png";
-                a.click();
-                document.body.removeChild(a);
-
-            }
-
-            });
-        
-
-          </script>
     </body>
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
