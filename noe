@@ -19,6 +19,7 @@
 
                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript">
+               <script type="text/javascript">
     const wrappert = document.querySelector(".wrapper");
     const DownloadBtnt = wrappert.querySelector(".donwload button");
     DownloadBtnt.addEventListener("click", () => {
