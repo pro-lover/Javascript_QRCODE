@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #68552c;
+    background-color: #000000;
     }
 .wrapper{
     height: 260px;
@@ -42,6 +42,21 @@ header p{
     outline: none;
     border-radius: 5px;
 
+}
+#htmlContent :where(img, p){
+    width: 100%;
+    outline: none;
+}
+#htmlContent img{
+    padding: 0 17px;
+}
+
+#htmlContent p{
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 17px;
+    background: #ffad00;
 }
 .form input{
     font-size: 18px;
